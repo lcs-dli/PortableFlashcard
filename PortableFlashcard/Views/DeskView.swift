@@ -8,8 +8,11 @@
 import SwiftUI
 
 struct DeskView: View {
+    //MARK: Storing property
+    //MARK: Computing property
     var body: some View {
         VStack{
+            //title of the table
             HStack{
                 Text("Deck")
                     .frame(width: 120)
@@ -24,11 +27,12 @@ struct DeskView: View {
                     .foregroundColor(.red)
                     .bold()
                 Spacer()
-                Text("Due")
-                    .frame(width: 110)
+                Text("Review")
+                    .frame(width: 100)
                     .foregroundColor(.green)
                     .bold()
             }
+            //the actual table
             List{
                 NavigationLink(destination: {
                     
@@ -48,6 +52,8 @@ struct DeskView: View {
                 })
             }
             Spacer()
+            
+            //button for add new item in the list
             Button(action: {
                 
             }, label: {
