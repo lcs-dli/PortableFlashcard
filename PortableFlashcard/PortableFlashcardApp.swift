@@ -11,7 +11,7 @@ import SwiftUI
 struct PortableFlashcardApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            DeskView()
         }
     }
 }
