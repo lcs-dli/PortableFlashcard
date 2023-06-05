@@ -28,8 +28,11 @@ struct StudyView: View {
                     Text("Deckname")
                     VStack{
                         Text("New: \(new)")
+                            .foregroundColor(.blue)
                         Text("Learn: \(learn)")
+                            .foregroundColor(.red)
                         Text("Review: \(review)")
+                            .foregroundColor(.green)
                     }
                 }
                 
@@ -44,6 +47,7 @@ struct StudyView: View {
                         Image(systemName: "arrow.forward")
                     }
                 })
+                .buttonStyle(.borderedProminent)
             }
         }
     }
