@@ -8,13 +8,53 @@
 import SwiftUI
 
 struct AddView: View {
+    //MARK: Storing property
+    //Picker
+    @State private var selectedDecks = "Please select one deck"
+    @State private var defaultDeck = "Please select one deck"
+    @State var decks: [Decks]
+    //Picker unwrapp
+    
+    
+    //Front input and back input
+    @State var front = ""
+    @State var back = ""
+    //MARK: Computing property
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        
+            VStack{
+                Picker(selection: $selectedDecks, label: Text("Select a deck")){
+                    Text(defaultDeck).tag(defaultDeck)
+                    ForEach(0..<decks.count){ index in
+                        Text(decks[index].deck).tag(decks[index].deck)
+                    }
+                }
+                .pickerStyle(.menu)
+                Text("Front: ")
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                TextField("", text: $front)
+                Spacer()
+                Text("Back: ")
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                TextField("", text: $back)
+                Spacer()
+                //Button the add the flashcard
+                Button(action: {
+                    
+                }, label: {
+                    Text("Add")
+                })
+                .buttonStyle(.borderedProminent)
+                //.frame(maxWidth: .infinity, alignment: .leading)
+                
+            
+        }
+        
     }
 }
 
 struct AddView_Previews: PreviewProvider {
     static var previews: some View {
-        AddView()
+        AddView(decks: demonstration)
     }
 }

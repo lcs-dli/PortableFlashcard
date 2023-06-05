@@ -14,9 +14,9 @@ struct PortableFlashcardApp: App {
             TabView(selection: .constant(1)){
                 DeskView()
                     .tag(1)
-                AddView()
+                AddView(decks: demonstration)
                     .tag(2)
-                BrowseView()
+                BrowseView(decks: demonstration)
                     .tag(3)
             }
         }

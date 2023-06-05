@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		496F637E2A2D5CAB00CC07BF /* Decks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496F637D2A2D5CAB00CC07BF /* Decks.swift */; };
 		498449562A2B0DED00450B83 /* PortableFlashcardApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498449552A2B0DED00450B83 /* PortableFlashcardApp.swift */; };
 		4984495A2A2B0DEF00450B83 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 498449592A2B0DEF00450B83 /* Assets.xcassets */; };
 		4984495D2A2B0DEF00450B83 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4984495C2A2B0DEF00450B83 /* Preview Assets.xcassets */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		496F637D2A2D5CAB00CC07BF /* Decks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decks.swift; sourceTree = "<group>"; };
 		498449522A2B0DED00450B83 /* PortableFlashcard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PortableFlashcard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		498449552A2B0DED00450B83 /* PortableFlashcardApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortableFlashcardApp.swift; sourceTree = "<group>"; };
 		498449592A2B0DEF00450B83 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 			children = (
 				498449702A2BF46B00450B83 /* db.sqlite */,
 				498449722A2BF47D00450B83 /* Flashcards.swift */,
+				496F637D2A2D5CAB00CC07BF /* Decks.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -188,6 +191,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				496F637E2A2D5CAB00CC07BF /* Decks.swift in Sources */,
 				498449782A2BF50700450B83 /* StudyView.swift in Sources */,
 				498449732A2BF47D00450B83 /* Flashcards.swift in Sources */,
 				4984496B2A2B0EEE00450B83 /* BrowseView.swift in Sources */,

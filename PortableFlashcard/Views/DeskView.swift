@@ -77,13 +77,13 @@ struct DeskView_Previews: PreviewProvider {
                     Text("Desk")
                 }
                 .tag(1)
-            AddView()
+            AddView(decks: demonstration)
                 .tabItem{
                     Image(systemName: "plus.app.fill")
                     Text("Add")
                 }
                 .tag(2)
-            BrowseView()
+            BrowseView(decks: demonstration)
                 .tabItem{
                     Image(systemName: "magnifyingglass.circle.fill")
                     Text("Browse")
