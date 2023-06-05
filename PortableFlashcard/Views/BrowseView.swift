@@ -8,13 +8,28 @@
 import SwiftUI
 
 struct BrowseView: View {
+    //MARK: Storing property
+    var decks: [Decks]
+    //MARK: Computing property
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        List(decks){ displayDeck in
+            NavigationLink(destination: {
+                
+            }, label: {
+                HStack{
+                    Text(displayDeck.deck)
+                    Spacer()
+                    Text("\(displayDeck.total)")
+                }
+                
+            })
+        }
     }
 }
 
 struct BrowseView_Previews: PreviewProvider {
     static var previews: some View {
-        BrowseView()
+        BrowseView(decks: demonstration)
     }
 }
