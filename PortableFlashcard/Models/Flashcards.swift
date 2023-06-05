@@ -10,7 +10,7 @@ import Blackbird
 
 struct Flashcards{
     @BlackbirdColumn var id: Int
-    @BlackbirdColumn var front: Int
-    @BlackbirdColumn var back: Int
-    @BlackbirdColumn var deck: Int
+    @BlackbirdColumn var front: String
+    @BlackbirdColumn var back: String
+    @BlackbirdColumn var deck: String
 }
