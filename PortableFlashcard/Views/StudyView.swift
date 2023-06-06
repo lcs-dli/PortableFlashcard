@@ -9,29 +9,19 @@ import SwiftUI
 
 struct StudyView: View {
     //MARK: Storing property
-    let new: Int
-    let learn: Int
-    let review: Int
+    let studyDeck: Decks
     //MARK: Computing property
     var body: some View {
         //if there is no cards for study
-        if((new + learn + review) == 0){
-            
-            
-            Text("Congratulation, you have nothing to study for now! ")
-            
-        
-        //if there is cards for study
-        }else{
             VStack{
                 HStack{
-                    Text("Deckname")
+                    Text(studyDeck.deck)
                     VStack{
-                        Text("New: \(new)")
+                        Text("New: \(studyDeck.new)")
                             .foregroundColor(.blue)
-                        Text("Learn: \(learn)")
+                        Text("Learn: \(studyDeck.learn)")
                             .foregroundColor(.red)
-                        Text("Review: \(review)")
+                        Text("Review: \(studyDeck.review)")
                             .foregroundColor(.green)
                     }
                 }
@@ -50,11 +40,10 @@ struct StudyView: View {
                 .buttonStyle(.borderedProminent)
             }
         }
-    }
 }
 
 struct StudyView_Previews: PreviewProvider {
     static var previews: some View {
-        StudyView(new: 0, learn: 0, review: 1)
+        StudyView(studyDeck: demonstration[0])
     }
 }

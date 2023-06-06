@@ -15,7 +15,7 @@ struct BrowseView: View {
     var body: some View {
         List(decks){ displayDeck in
             NavigationLink(destination: {
-                
+                BrowseSetView(selectedDeck: displayDeck)
             }, label: {
                 HStack{
                     Text(displayDeck.deck)
@@ -30,6 +30,8 @@ struct BrowseView: View {
 
 struct BrowseView_Previews: PreviewProvider {
     static var previews: some View {
-        BrowseView(decks: demonstration)
+        NavigationView{
+            BrowseView(decks: demonstration)
+        }
     }
 }

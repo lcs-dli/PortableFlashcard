@@ -33,23 +33,43 @@ struct DeskView: View {
                     .bold()
             }
             //the actual table
-            List{
-                NavigationLink(destination: {
-                    
-                }, label: {
-                    HStack{
-                        Text("DeckName")
-                        Spacer()
-                        Text("20")
-                            .foregroundColor(.blue)
-                        Spacer()
-                        Text("10")
-                            .foregroundColor(.red)
-                        Spacer()
-                        Text("3")
-                            .foregroundColor(.green)
-                    }
-                })
+            List(demonstration){ displayedDeck in
+                if(displayedDeck.remembered != displayedDeck.total){
+                    NavigationLink(destination: {
+                        StudyView(studyDeck: displayedDeck)
+                    }, label: {
+                        HStack{
+                            Text(displayedDeck.deck)
+                            Spacer()
+                            Text("\(displayedDeck.new)")
+                                .foregroundColor(.blue)
+                            Spacer()
+                            Text("\(displayedDeck.learn)")
+                                .foregroundColor(.red)
+                            Spacer()
+                            Text("\(displayedDeck.review)")
+                                .foregroundColor(.green)
+                        }
+                    })
+                }else{
+                    NavigationLink(destination: {
+                        FinishView()
+                    }, label: {
+                        HStack{
+                            Text(displayedDeck.deck)
+                            Spacer()
+                            Text("\(displayedDeck.new)")
+                                .foregroundColor(.blue)
+                            Spacer()
+                            Text("\(displayedDeck.learn)")
+                                .foregroundColor(.red)
+                            Spacer()
+                            Text("\(displayedDeck.review)")
+                                .foregroundColor(.green)
+                        }
+                    })
+                }
+                
             }
             Spacer()
             
@@ -70,25 +90,27 @@ struct DeskView: View {
 
 struct DeskView_Previews: PreviewProvider {
     static var previews: some View {
-        TabView(selection: .constant(1)){
-            DeskView()
-                .tabItem{
-                    Image(systemName: "tablecells.fill")
-                    Text("Desk")
-                }
-                .tag(1)
-            AddView(decks: demonstration)
-                .tabItem{
-                    Image(systemName: "plus.app.fill")
-                    Text("Add")
-                }
-                .tag(2)
-            BrowseView(decks: demonstration)
-                .tabItem{
-                    Image(systemName: "magnifyingglass.circle.fill")
-                    Text("Browse")
-                }
-                .tag(3)
+        NavigationView{
+            TabView(selection: .constant(1)){
+                DeskView()
+                    .tabItem{
+                        Image(systemName: "tablecells.fill")
+                        Text("Desk")
+                    }
+                    .tag(1)
+                AddView(decks: demonstration)
+                    .tabItem{
+                        Image(systemName: "plus.app.fill")
+                        Text("Add")
+                    }
+                    .tag(2)
+                BrowseView(decks: demonstration)
+                    .tabItem{
+                        Image(systemName: "magnifyingglass.circle.fill")
+                        Text("Browse")
+                    }
+                    .tag(3)
+            }
         }
     }
 }
