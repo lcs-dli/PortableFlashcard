@@ -9,14 +9,34 @@ import Foundation
 import Blackbird
 
 struct Decks: Identifiable{
+    //MARK: Storing property
     var uuID: UUID = UUID()
     @BlackbirdColumn var id: Int
-    @BlackbirdColumn var deck: String
-    @BlackbirdColumn var new: Int
-    @BlackbirdColumn var learn: Int
-    @BlackbirdColumn var review: Int
-    @BlackbirdColumn var remembered: Int
-    @BlackbirdColumn var total: Int
+    @BlackbirdColumn var Deck: String
+    @BlackbirdColumn var New: Int
+    @BlackbirdColumn var Learn: Int
+    @BlackbirdColumn var Review: Int
+    @BlackbirdColumn var Remembered: Int
+    
+    var flashcards: [Flashcards]
+    //MARK: Computing property
+    var Due: Int{
+        return New + Learn + Review
+    }
+    
+    var Total: Int{
+        return Due + Remembered
+    }
+    
+    var cardsNeedToStudy: [Flashcards]{
+        var hold: [Flashcards] = []
+        for index in flashcards{
+            if(index.Status != "Remembered"){
+                hold.append(index)
+            }
+        }
+        return hold
+    }
 }
 
-let demonstration = [Decks(id: 1, deck: "Alpha", new: 1, learn: 2, review: 3, remembered: 4, total: 10),Decks(id: 2, deck: "Beta", new: 1, learn: 2, review: 3, remembered: 4, total: 10),Decks(id: 3, deck: "Zeta", new: 1, learn: 2, review: 3, remembered: 4, total: 10)]
+let demonstration = [Decks(id: 1, Deck: "Alpha", New: 1, Learn: 2, Review: 3, Remembered: 4,flashcards: cards),Decks(id: 2, Deck: "Beta", New: 1, Learn: 2, Review: 3, Remembered: 4, flashcards: cards),Decks(id: 3, Deck: "Zeta", New: 0, Learn: 0, Review: 0, Remembered: 10, flashcards: cards)]
