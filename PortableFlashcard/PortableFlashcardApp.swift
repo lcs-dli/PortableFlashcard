@@ -13,12 +13,28 @@ struct PortableFlashcardApp: App {
         WindowGroup {
             TabView(selection: .constant(1)){
                 DeskView()
+                    .tabItem{
+                        Image(systemName: "tablecells.fill")
+                        Text("Desk")
+                    }
                     .tag(1)
-                AddView(decks: demonstration)
+                    .environment(\.blackbirdDatabase, AppDatabase.instance)
+                AddView(decks: demonstrationDeck)
+                    .tabItem{
+                        Image(systemName: "plus.app.fill")
+                        Text("Add")
+                    }
                     .tag(2)
-                BrowseView(decks: demonstration)
+                    .environment(\.blackbirdDatabase, AppDatabase.instance)
+                BrowseView(decks: demonstrationDeck)
+                    .tabItem{
+                        Image(systemName: "magnifyingglass.circle.fill")
+                        Text("Browse")
+                    }
                     .tag(3)
+                    .environment(\.blackbirdDatabase, AppDatabase.instance)
             }
+            
         }
     }
 }
