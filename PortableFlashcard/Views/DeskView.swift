@@ -48,45 +48,6 @@ struct DeskView: View {
                 }
                 //the actual table
                 
-                
-              /* List(demonstrationDeck){ displayedDeck in
-                    if(displayedDeck.deck.Remembered != displayedDeck.Total){
-                        NavigationLink(destination: {
-                            StudyView(studyDeck: displayedDeck)
-                        }, label: {
-                            HStack{
-                                Text(displayedDeck.deck.Deck)
-                                Spacer()
-                                Text("\(displayedDeck.deck.New)")
-                                    .foregroundColor(.blue)
-                                Spacer()
-                                Text("\(displayedDeck.deck.Learn)")
-                                    .foregroundColor(.red)
-                                Spacer()
-                                Text("\(displayedDeck.deck.Review)")
-                                    .foregroundColor(.green)
-                            }
-                        })
-                    }else{
-                        NavigationLink(destination: {
-                            FinishView()
-                        }, label: {
-                            HStack{
-                                Text(displayedDeck.deck.Deck)
-                                Spacer()
-                                Text("\(displayedDeck.deck.New)")
-                                    .foregroundColor(.blue)
-                                Spacer()
-                                Text("\(displayedDeck.deck.Learn)")
-                                    .foregroundColor(.red)
-                                Spacer()
-                                Text("\(displayedDeck.deck.Review)")
-                                    .foregroundColor(.green)
-                            }
-                        })
-                    }
-                    
-                }*/
                 List(decks.results){ displayedDeck in
                     if (displayedDeck.Due != 0){
                         NavigationLink(destination: {
