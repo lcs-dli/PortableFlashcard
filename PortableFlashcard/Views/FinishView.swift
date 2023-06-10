@@ -9,7 +9,18 @@ import SwiftUI
 
 struct FinishView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack{
+            Text("Congratulation, you've finished the study for this desk! ")
+                .bold()
+                .font(.title)
+                .padding()
+            Text("Wait a few day for the next study to happen")
+                .font(.caption)
+                .frame(maxWidth: .infinity, alignment: .leading)
+            
+            Spacer()
+        }
+        
     }
 }
 

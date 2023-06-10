@@ -9,7 +9,7 @@ import SwiftUI
 
 struct BrowseSetView: View {
     //MARK: Storing property
-    let selectedDeck: Decks
+    let selectedDeck: CombineDeck
     //MARK: Computing property
     var body: some View {
         //List for different status of flashcards
@@ -20,7 +20,7 @@ struct BrowseSetView: View {
                 HStack{
                     Text("All")
                     Spacer()
-                    Text("\(selectedDeck.total)")
+                    Text("\(selectedDeck.Total)")
                 }
                 
             })
@@ -30,7 +30,7 @@ struct BrowseSetView: View {
                 HStack{
                     Text("New")
                     Spacer()
-                    Text("\(selectedDeck.new)")
+                    Text("\(selectedDeck.deck.New)")
                 }
             })
             NavigationLink(destination: {
@@ -39,7 +39,7 @@ struct BrowseSetView: View {
                 HStack{
                     Text("Learn")
                     Spacer()
-                    Text("\(selectedDeck.learn)")
+                    Text("\(selectedDeck.deck.Learn)")
                 }
             })
             NavigationLink(destination: {
@@ -48,7 +48,7 @@ struct BrowseSetView: View {
                 HStack{
                     Text("Review")
                     Spacer()
-                    Text("\(selectedDeck.review)")
+                    Text("\(selectedDeck.deck.Review)")
                 }
             })
             NavigationLink(destination: {
@@ -57,7 +57,7 @@ struct BrowseSetView: View {
                 HStack{
                     Text("Remembered")
                     Spacer()
-                    Text("\(selectedDeck.remembered)")
+                    Text("\(selectedDeck.deck.Remembered)")
                 }
             })
         }
@@ -66,6 +66,6 @@ struct BrowseSetView: View {
 
 struct BrowseSetView_Previews: PreviewProvider {
     static var previews: some View {
-        BrowseSetView(selectedDeck: demonstration[1])
+        BrowseSetView(selectedDeck: demonstrationDeck[1])
     }
 }

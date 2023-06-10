@@ -9,7 +9,7 @@ import SwiftUI
 
 struct BrowseView: View {
     //MARK: Storing property
-    var decks: [Decks]
+    var decks: [CombineDeck]
     //MARK: Computing property
     
     var body: some View {
@@ -18,9 +18,9 @@ struct BrowseView: View {
                 BrowseSetView(selectedDeck: displayDeck)
             }, label: {
                 HStack{
-                    Text(displayDeck.deck)
+                    Text(displayDeck.deck.Deck)
                     Spacer()
-                    Text("\(displayDeck.total)")
+                    Text("\(displayDeck.Total)")
                 }
                 
             })
@@ -31,7 +31,7 @@ struct BrowseView: View {
 struct BrowseView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView{
-            BrowseView(decks: demonstration)
+            BrowseView(decks: demonstrationDeck)
         }
     }
 }

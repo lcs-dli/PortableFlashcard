@@ -15,13 +15,13 @@ struct StudyView: View {
         //if there is no cards for study
             VStack{
                 HStack{
-                    Text(studyDeck.deck)
+                    Text(studyDeck.Deck)
                     VStack{
-                        Text("New: \(studyDeck.new)")
+                        Text("New: \(studyDeck.New)")
                             .foregroundColor(.blue)
-                        Text("Learn: \(studyDeck.learn)")
+                        Text("Learn: \(studyDeck.Learn)")
                             .foregroundColor(.red)
-                        Text("Review: \(studyDeck.review)")
+                        Text("Review: \(studyDeck.Review)")
                             .foregroundColor(.green)
                     }
                 }

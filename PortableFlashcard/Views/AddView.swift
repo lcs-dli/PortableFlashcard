@@ -12,7 +12,7 @@ struct AddView: View {
     //Picker
     @State private var selectedDecks = "Please select one deck"
     @State private var defaultDeck = "Please select one deck"
-    @State var decks: [Decks]
+    @State var decks: [CombineDeck]
     //Picker unwrapp
     
     
@@ -26,7 +26,7 @@ struct AddView: View {
                 Picker(selection: $selectedDecks, label: Text("Select a deck")){
                     Text(defaultDeck).tag(defaultDeck)
                     ForEach(0..<decks.count){ index in
-                        Text(decks[index].deck).tag(decks[index].deck)
+                        Text(decks[index].deck.Deck).tag(decks[index].deck.Deck)
                     }
                 }
                 .pickerStyle(.menu)
@@ -55,6 +55,6 @@ struct AddView: View {
 
 struct AddView_Previews: PreviewProvider {
     static var previews: some View {
-        AddView(decks: demonstration)
+        AddView(decks: demonstrationDeck)
     }
 }

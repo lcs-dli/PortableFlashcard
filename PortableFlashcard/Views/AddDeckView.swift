@@ -13,21 +13,56 @@ struct AddDeckView: View {
     //Access to the connection of the database (needed to add a new record)
     @Environment(\.blackbirdDatabase) var db: Blackbird.Database?
     
+    //Hold detail for deck
     @State var deckName = ""
+    
     //MARK: Computing property
     var body: some View {
         NavigationView{
             VStack{
                 Text("Deck's name: ")
                 
-                TextField("", text: $deckName)
+                TextField("Enter deck name", text: $deckName)
                     .textFieldStyle(.roundedBorder)
             }
             .padding(5)
             .toolbar{
                 ToolbarItem(placement: .primaryAction){
                     Button(action: {
-                        addDeck()
+                        //Write to the database
+                        Task{
+                            try await db!.transaction{ core in
+                                try core.query("""
+                                            INSERT INTO Decks (
+                                                Deck,
+                                                New,
+                                                Learn,
+                                                Review,
+                                                Remembered,
+                                                Due,
+                                                Total
+                                            )
+                                            VALUES(
+                                                (?),
+                                                (?),
+                                                (?),
+                                                (?),
+                                                (?),
+                                                (?),
+                                                (?)
+                                            )
+                                            """,
+                                               deckName,
+                                               0,
+                                               0,
+                                               0,
+                                               0,
+                                               0,
+                                               0)
+                                }
+                            //reset the deck name
+                            deckName = ""
+                        }
                     }, label: {
                         Text("Add")
                     })
@@ -40,38 +75,7 @@ struct AddDeckView: View {
     //MARK: Functions
     
     func addDeck(){
-        //Write to the database
-        Task{
-            try await db?.transaction{core in
-                try core.query("""
-                            INSERT INTO DECKS (
-                                Deck,
-                                New,
-                                Learn,
-                                Review,
-                                Remembered
-                                Due,
-                                Total
-                            )
-                            VALUES(
-                                (?),
-                                (?),
-                                (?),
-                                (?),
-                                (?),
-                                (?),
-                                (?)
-                            )
-                        """,
-                        deckName,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0)
-            }
-        }
+        
     }
 }
 
