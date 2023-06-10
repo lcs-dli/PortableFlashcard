@@ -30,39 +30,7 @@ struct AddDeckView: View {
                 ToolbarItem(placement: .primaryAction){
                     Button(action: {
                         //Write to the database
-                        Task{
-                            try await db!.transaction{ core in
-                                try core.query("""
-                                            INSERT INTO Decks (
-                                                Deck,
-                                                New,
-                                                Learn,
-                                                Review,
-                                                Remembered,
-                                                Due,
-                                                Total
-                                            )
-                                            VALUES(
-                                                (?),
-                                                (?),
-                                                (?),
-                                                (?),
-                                                (?),
-                                                (?),
-                                                (?)
-                                            )
-                                            """,
-                                               deckName,
-                                               0,
-                                               0,
-                                               0,
-                                               0,
-                                               0,
-                                               0)
-                                }
-                            //reset the deck name
-                            deckName = ""
-                        }
+                        addDeck()
                     }, label: {
                         Text("Add")
                     })
@@ -75,7 +43,39 @@ struct AddDeckView: View {
     //MARK: Functions
     
     func addDeck(){
-        
+        Task{
+            try await db!.transaction{ core in
+                try core.query("""
+                            INSERT INTO Decks (
+                                Deck,
+                                New,
+                                Learn,
+                                Review,
+                                Remembered,
+                                Due,
+                                Total
+                            )
+                            VALUES(
+                                (?),
+                                (?),
+                                (?),
+                                (?),
+                                (?),
+                                (?),
+                                (?)
+                            )
+                            """,
+                               deckName,
+                               0,
+                               0,
+                               0,
+                               0,
+                               0,
+                               0)
+                }
+            //reset the deck name
+            deckName = ""
+        }
     }
 }
 
