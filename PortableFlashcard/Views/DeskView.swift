@@ -132,7 +132,7 @@ struct DeskView_Previews: PreviewProvider {
                     }
                     .tag(2)
                     .environment(\.blackbirdDatabase, AppDatabase.instance)
-                BrowseView(decks: demonstration)
+                BrowseView()
                     .tabItem{
                         Image(systemName: "magnifyingglass.circle.fill")
                         Text("Browse")

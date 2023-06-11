@@ -6,14 +6,18 @@
 //
 
 import SwiftUI
+import Blackbird
 
 struct BrowseView: View {
     //MARK: Storing property
-    var decks: [Decks]
+    //var decks: [Decks]
+    @BlackbirdLiveModels ({ db in
+        try await Decks.read(from: db)
+    }) var decks
     //MARK: Computing property
     
     var body: some View {
-        List(decks){ displayDeck in
+        List(decks.results){ displayDeck in
             NavigationLink(destination: {
                 BrowseSetView(selectedDeck: displayDeck)
             }, label: {
@@ -31,7 +35,8 @@ struct BrowseView: View {
 struct BrowseView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView{
-            BrowseView(decks: demonstration)
+            BrowseView()
+                .environment(\.blackbirdDatabase, AppDatabase.instance)
         }
     }
 }
