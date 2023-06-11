@@ -9,7 +9,7 @@ import SwiftUI
 
 struct BrowseSetView: View {
     //MARK: Storing property
-    let selectedDeck: CombineDeck
+    let selectedDeck: Decks
     //MARK: Computing property
     var body: some View {
         //List for different status of flashcards
