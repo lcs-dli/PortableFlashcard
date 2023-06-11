@@ -6,15 +6,21 @@
 //
 
 import SwiftUI
+import Blackbird
 
 struct AddView: View {
     //MARK: Storing property
     //Picker
-    @State private var selectedDecks = "Please select one deck"
+    @State private var selectedDecks = 1
     @State private var defaultDeck = "Please select one deck"
-    @State var decks: [CombineDeck]
-    //Picker unwrapp
     
+    @BlackbirdLiveModels({db in
+        try await Decks.read(from: db)
+    }) var decks
+    
+    
+    //Connect with database
+    @Environment(\.blackbirdDatabase) var db: Blackbird.Database?
     
     //Front input and back input
     @State var front = ""
@@ -25,8 +31,8 @@ struct AddView: View {
             VStack{
                 Picker(selection: $selectedDecks, label: Text("Select a deck")){
                     Text(defaultDeck).tag(defaultDeck)
-                    ForEach(0..<decks.count){ index in
-                        Text(decks[index].deck.Deck).tag(decks[index].deck.Deck)
+                    ForEach(decks.results){ index in
+                        Text(index.Deck).tag(index.Deck)
                     }
                 }
                 .pickerStyle(.menu)
@@ -40,7 +46,35 @@ struct AddView: View {
                 Spacer()
                 //Button the add the flashcard
                 Button(action: {
-                    
+                    Task{
+                        try await db!.transaction{ core in
+                            try core.query("""
+                                        INSERT INTO Flashcards (
+                                            Front,
+                                            Back,
+                                            Status,
+                                            Deckid,
+                                            ReviewDate
+                                        )
+                                        VALUES(
+                                            (?),
+                                            (?),
+                                            (?),
+                                            (?),
+                                            (?)
+                                        )
+                                        """,
+                                            front,
+                                            back,
+                                            "New",
+                                           selectedDecks,
+                                           "2023-06-11"
+                                            )
+                            }
+                        
+                        front = ""
+                        back = ""
+                    }
                 }, label: {
                     Text("Add")
                 })
@@ -55,6 +89,7 @@ struct AddView: View {
 
 struct AddView_Previews: PreviewProvider {
     static var previews: some View {
-        AddView(decks: demonstrationDeck)
+        AddView()
+            .environment(\.blackbirdDatabase, AppDatabase.instance)
     }
 }

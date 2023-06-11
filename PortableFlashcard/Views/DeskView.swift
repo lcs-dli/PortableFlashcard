@@ -123,7 +123,7 @@ struct DeskView_Previews: PreviewProvider {
                     }
                     .tag(1)
                     .environment(\.blackbirdDatabase, AppDatabase.instance)
-                AddView(decks: demonstrationDeck)
+                AddView()
                     .tabItem{
                         Image(systemName: "plus.app.fill")
                         Text("Add")
