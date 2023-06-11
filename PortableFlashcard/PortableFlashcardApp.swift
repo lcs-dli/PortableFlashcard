@@ -26,7 +26,7 @@ struct PortableFlashcardApp: App {
                     }
                     .tag(2)
                     .environment(\.blackbirdDatabase, AppDatabase.instance)
-                BrowseView(decks: demonstrationDeck)
+                BrowseView(decks: demonstration)
                     .tabItem{
                         Image(systemName: "magnifyingglass.circle.fill")
                         Text("Browse")

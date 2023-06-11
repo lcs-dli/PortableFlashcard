@@ -30,7 +30,7 @@ struct BrowseSetView: View {
                 HStack{
                     Text("New")
                     Spacer()
-                    Text("\(selectedDeck.deck.New)")
+                    Text("\(selectedDeck.New)")
                 }
             })
             NavigationLink(destination: {
@@ -39,7 +39,7 @@ struct BrowseSetView: View {
                 HStack{
                     Text("Learn")
                     Spacer()
-                    Text("\(selectedDeck.deck.Learn)")
+                    Text("\(selectedDeck.Learn)")
                 }
             })
             NavigationLink(destination: {
@@ -48,7 +48,7 @@ struct BrowseSetView: View {
                 HStack{
                     Text("Review")
                     Spacer()
-                    Text("\(selectedDeck.deck.Review)")
+                    Text("\(selectedDeck.Review)")
                 }
             })
             NavigationLink(destination: {
@@ -57,7 +57,7 @@ struct BrowseSetView: View {
                 HStack{
                     Text("Remembered")
                     Spacer()
-                    Text("\(selectedDeck.deck.Remembered)")
+                    Text("\(selectedDeck.Remembered)")
                 }
             })
         }
@@ -66,6 +66,6 @@ struct BrowseSetView: View {
 
 struct BrowseSetView_Previews: PreviewProvider {
     static var previews: some View {
-        BrowseSetView(selectedDeck: demonstrationDeck[1])
+        BrowseSetView(selectedDeck: demonstration[1])
     }
 }
