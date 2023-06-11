@@ -23,22 +23,33 @@ struct BrowseView: View {
     var body: some View {
         NavigationView{
             List(){
-                Text("A")
-                Text("B")
-                Text("C")
-                }
-            .navigationTitle("Browse")
+                Section(content: {
+                    Text("A")
+                    Text("B")
+                }, header: {
+                    Text("Group 1")
+                })
+                
+                Section(content: {
+                    Text("C")
+                }, header: {
+                    Text("Group 2")
+                })
             }
+            .listStyle(.grouped)
+            .navigationTitle("Browse")
         }
         
     }
+        
+        
+}
     
 
 struct BrowseView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationView{
-            BrowseView()
-                .environment(\.blackbirdDatabase, AppDatabase.instance)
-        }
+        BrowseView()
+            .environment(\.blackbirdDatabase, AppDatabase.instance)
+        
     }
 }
