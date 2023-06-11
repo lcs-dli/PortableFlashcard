@@ -14,9 +14,7 @@ struct DeskView: View {
     //flashcards database
     
     
-    @BlackbirdLiveQuery(tableName: "Flashcards", { db in
-        try await db.query("SELECT * FROM FlashcardsWithDeckNames")
-    }) var flashcards
+   
     
     @BlackbirdLiveModels ({ db in
         try await Decks.read(from: db)

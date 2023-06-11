@@ -24,6 +24,7 @@
 		498449762A2BF4A100450B83 /* Blackbird in Frameworks */ = {isa = PBXBuildFile; productRef = 498449752A2BF4A100450B83 /* Blackbird */; };
 		498449782A2BF50700450B83 /* StudyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498449772A2BF50700450B83 /* StudyView.swift */; };
 		49F44AD32A3360E700158B06 /* AddDeckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F44AD22A3360E700158B06 /* AddDeckView.swift */; };
+		49F44AD52A3551D400158B06 /* BrowseFlashcardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F44AD42A3551D400158B06 /* BrowseFlashcardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		498449722A2BF47D00450B83 /* Flashcards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flashcards.swift; sourceTree = "<group>"; };
 		498449772A2BF50700450B83 /* StudyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyView.swift; sourceTree = "<group>"; };
 		49F44AD22A3360E700158B06 /* AddDeckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDeckView.swift; sourceTree = "<group>"; };
+		49F44AD42A3551D400158B06 /* BrowseFlashcardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseFlashcardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 			children = (
 				494C31DA2A2F84E400D6FF88 /* AppDatabase.swift */,
 				4984496E2A2B395200450B83 /* BrowseSetView.swift */,
+				49F44AD42A3551D400158B06 /* BrowseFlashcardView.swift */,
 			);
 			path = ViewHelpers;
 			sourceTree = "<group>";
@@ -217,6 +220,7 @@
 				494C31DD2A30024800D6FF88 /* CombineDeck.swift in Sources */,
 				49F44AD32A3360E700158B06 /* AddDeckView.swift in Sources */,
 				496F637E2A2D5CAB00CC07BF /* Decks.swift in Sources */,
+				49F44AD52A3551D400158B06 /* BrowseFlashcardView.swift in Sources */,
 				494C31D82A2F7FAB00D6FF88 /* FinishView.swift in Sources */,
 				498449782A2BF50700450B83 /* StudyView.swift in Sources */,
 				498449732A2BF47D00450B83 /* Flashcards.swift in Sources */,
