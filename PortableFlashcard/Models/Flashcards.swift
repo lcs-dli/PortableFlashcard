@@ -12,9 +12,10 @@ struct Flashcards: BlackbirdModel{
     @BlackbirdColumn var id: Int
     @BlackbirdColumn var Front: String
     @BlackbirdColumn var Back: String
-    @BlackbirdColumn var Deck: String
     @BlackbirdColumn var Status: String
+    //@BlackbirdColumn var Deck: String
+    @BlackbirdColumn var Deckid: Int
     @BlackbirdColumn var ReviewDate: String
 }
 
-let cards = [Flashcards(id: 1, Front: "A", Back: "First letter in the alphabet", Deck: "English alphabet", Status: "New", ReviewDate: "2022-06-12")]
+let cards = [Flashcards(id: 1, Front: "A", Back: "First letter in the alphabet", Status: "New", Deckid: 1, ReviewDate: "2022-06-12")]

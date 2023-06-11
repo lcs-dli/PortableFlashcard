@@ -10,10 +10,10 @@ import Blackbird
 
 struct BrowseView: View {
     //MARK: Storing property
-    //var decks: [Decks]
-    @BlackbirdLiveModels ({ db in
-        try await Decks.read(from: db)
+    @BlackbirdLiveQuery(tableName: "Flashcards", {db in
+        try await db.query("SELECT * FROM DeckWithDeckid")
     }) var decks
+   
     
     @BlackbirdLiveQuery(tableName: "Flashcards", { db in
         try await db.query("SELECT * FROM FlashcardsWithDeckNames")
@@ -23,18 +23,20 @@ struct BrowseView: View {
     var body: some View {
         NavigationView{
             List(){
-                Section(content: {
-                    Text("A")
-                    Text("B")
-                }, header: {
-                    Text("Group 1")
-                })
                 
-                Section(content: {
-                    Text("C")
-                }, header: {
-                    Text("Group 2")
-                })
+                
+                ForEach(decks.results, id: \.self){currentDeck in
+                    Section(content: {
+                        if let deckId = currentDeck["Deckid"]?.intValue{
+                            BrowseSetView(DeckId: deckId)
+                        }
+                    }, header: {
+                        if let deckName = currentDeck["Deck"]?.stringValue{
+                            Text(deckName)
+                        }
+                    })
+                    
+                }
             }
             .listStyle(.grouped)
             .navigationTitle("Browse")
@@ -42,7 +44,7 @@ struct BrowseView: View {
         
     }
         
-        
+    
 }
     
 
